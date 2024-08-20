@@ -3,7 +3,7 @@
 @Date: 19-08-2024
 @Last Modified by: Prayag Bhoir
 @Last Modified time: 20-08-2024
-@Title : Python programs user ragistration on regex
+@Title : Python programs user ragistration on regex uc6
 """
 import re
 
