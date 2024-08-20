@@ -6,7 +6,7 @@
 @Title : Python programs for test case
 """
 import unittest
-from user_registration import validate_name, is_email_valid, is_mobile_valid
+from user_registration import validate_name, is_email_valid, is_mobile_valid, is_password_valid
 
 class TestUserRegistration(unittest.TestCase):
     def test_validate_name(self):
@@ -41,7 +41,18 @@ class TestUserRegistration(unittest.TestCase):
         self.assertFalse(is_mobile_valid('919919819801'))  
         self.assertFalse(is_mobile_valid('91 99198198'))   
         self.assertFalse(is_mobile_valid('91 09919819801'))  
-    
+
+def test_is_password_valid(self):
+        # Valid passwords
+        self.assertTrue(is_password_valid('Password123'))  # At least 8 characters
+        self.assertTrue(is_password_valid('abcdefgh'))     # Exactly 8 characters
+        self.assertTrue(is_password_valid('12345678'))     # Exactly 8 characters
+
+        # Invalid passwords
+        self.assertFalse(is_password_valid('short'))        # Less than 8 characters
+        self.assertFalse(is_password_valid('1234'))         # Less than 8 characters
+        self.assertFalse(is_password_valid('password'))     # Less than 8 characters
+   
 
 
 if __name__=="__main__":

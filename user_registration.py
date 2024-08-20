@@ -50,6 +50,20 @@ def is_mobile_valid(mobile):
     pattern = r"^\d{2} \d{10}$"
     return bool(re.match(pattern, mobile))
 
+def is_password_valid(password):
+    """
+    Description:
+      This function validates the password based on predefined rules.
+
+    Parameters:
+      password (str): User input password.
+
+    Returns:
+      bool: True if match, False otherwise.
+    """
+    pattern = r'^.{8,}$'  # Password must be at least 8 characters long
+    return bool(re.match(pattern, password))
+
 def validate_user_input(input_prompt, validation_func, success_message, failure_message):
     """
     Description:
@@ -115,12 +129,23 @@ def main():
     )
     if mobile is None:
         return  # User exited
+    
+    # Validate password
+    password = validate_user_input(
+        "Enter the password (at least 8 characters long, or 0 to exit): ",
+        is_password_valid,
+        "Password is valid",
+        "Password is invalid, must be at least 8 characters long, try again.\n"
+    )
+    if password is None:
+        return  # User exited
 
     # All inputs are valid
     print("\nRegistration Successful!")
     print(f"Name: {first_name} {last_name}")
     print(f"Email: {email}")
     print(f"Mobile: {mobile}")
+    print(f"Password: {password}")
 
 if __name__=="__main__":
     main()
