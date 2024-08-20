@@ -12,7 +12,8 @@ class TestUserRegistration(unittest.TestCase):
         self.assertFalse(validate_name('prayag'))
         self.assertFalse(validate_name('Deven123'))
         self.assertFalse(validate_name('Ay'))
-
+        
+    def test_is_email_valid(self):
         # Valid emails
         self.assertTrue(is_email_valid('prayag@gmail.com'))
         self.assertTrue(is_email_valid('abc.xyz@bl.co'))
