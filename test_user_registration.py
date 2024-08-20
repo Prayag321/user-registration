@@ -25,11 +25,13 @@ class TestUserRegistration(unittest.TestCase):
         self.assertTrue(is_email_valid('prayag@gmail.com'))
         self.assertTrue(is_email_valid('abc.xyz@bl.co'))
         self.assertTrue(is_email_valid('abc@bl.co.in'))
+        self.assertTrue(is_email_valid('abc@gmail.com.com'))
 
         # Invalid emails
         self.assertFalse(is_email_valid('abc@bl'))
         self.assertFalse(is_email_valid('abc@bl.c'))
         self.assertFalse(is_email_valid('abc@bl.corp'))
+        self.assertFalse(is_email_valid('abc@gmail.com.1a'))
 
     def test_is_mobile_valid(self):
         # Valid mobile numbers

@@ -3,7 +3,7 @@
 @Date: 19-08-2024
 @Last Modified by: Prayag Bhoir
 @Last Modified time: 20-08-2024
-@Title : Python programs user ragistration on regex uc8
+@Title : Python programs user ragistration on regex uc9
 """
 import re
 
@@ -32,7 +32,7 @@ def is_email_valid(email):
     Returns:
       bool:True if match, False otherwise
     """
-    pattern = r"^[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)?@[a-zA-Z0-9]+\.[a-zA-Z]{2,3}(\.[a-zA-Z]{2})?$"
+    pattern = r"^(?!.*[.@]{2})[a-zA-Z0-9]+([\.\-_]?[a-zA-Z0-9]+)*@[a-zA-Z0-9]+\.[a-zA-Z]{2,3}(\.[a-zA-Z]{2,3})?$"
     return bool(re.match(pattern, email))
 
 
