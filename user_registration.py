@@ -61,7 +61,7 @@ def is_password_valid(password):
     Returns:
       bool: True if match, False otherwise.
     """
-    pattern = r'^.{8,}$'  # Password must be at least 8 characters long
+    pattern = r'^(?=.*[A-Z]).{8,}$'  # Password must be at least 8 characters long
     return bool(re.match(pattern, password))
 
 def validate_user_input(input_prompt, validation_func, success_message, failure_message):
@@ -135,7 +135,7 @@ def main():
         "Enter the password (at least 8 characters long, or 0 to exit): ",
         is_password_valid,
         "Password is valid",
-        "Password is invalid, must be at least 8 characters long, try again.\n"
+        "Password is invalid, must be at least 8 characters long and 1 upper case char, try again.\n"
     )
     if password is None:
         return  # User exited

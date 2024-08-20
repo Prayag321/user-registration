@@ -44,14 +44,14 @@ class TestUserRegistration(unittest.TestCase):
 
 def test_is_password_valid(self):
         # Valid passwords
-        self.assertTrue(is_password_valid('Password123'))  # At least 8 characters
-        self.assertTrue(is_password_valid('abcdefgh'))     # Exactly 8 characters
-        self.assertTrue(is_password_valid('12345678'))     # Exactly 8 characters
+        self.assertTrue(is_password_valid('Password123'))  # At least 8 
+        self.assertTrue(is_password_valid('abcdefgh'))     # Exactly 8 
+        self.assertTrue(is_password_valid('12345678'))     
 
         # Invalid passwords
-        self.assertFalse(is_password_valid('short'))        # Less than 8 characters
-        self.assertFalse(is_password_valid('1234'))         # Less than 8 characters
-        self.assertFalse(is_password_valid('password'))     # Less than 8 characters
+        self.assertFalse(is_password_valid('short'))        
+        self.assertFalse(is_password_valid('1234'))         
+        self.assertFalse(is_password_valid('password'))     
    
 
 
