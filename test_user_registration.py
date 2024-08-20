@@ -38,21 +38,21 @@ class TestUserRegistration(unittest.TestCase):
         self.assertTrue(is_mobile_valid('12 2345678901'))
 
         # Invalid mobile numbers
-        self.assertFalse(is_mobile_valid('919919819801'))  
+        self.assertFalse(is_mobile_valid('91991981980'))  
         self.assertFalse(is_mobile_valid('91 99198198'))   
-        self.assertFalse(is_mobile_valid('91 09919819801'))  
+        self.assertFalse(is_mobile_valid('91 109919819801'))  
 
 def test_is_password_valid(self):
         # Valid passwords
-        self.assertTrue(is_password_valid('Password123'))  # At least 8 
-        self.assertTrue(is_password_valid('abcdefgh'))     # Exactly 8 
-        self.assertTrue(is_password_valid('12345678'))     
+        self.assertTrue(is_password_valid('Password123'))  # Valid: 8+ chars, 1+ uppercase, 1+ digit
+        self.assertTrue(is_password_valid('A1b2c3d4E'))     # 8+ chars , 1 upper char, 1 digit 
 
         # Invalid passwords
-        self.assertFalse(is_password_valid('short'))        
-        self.assertFalse(is_password_valid('1234'))         
-        self.assertFalse(is_password_valid('password'))     
-   
+        self.assertFalse(is_password_valid('password123'))  # No uppercase letter
+        self.assertFalse(is_password_valid('Passwrd'))      # Less than 8 chars, no digit
+        self.assertFalse(is_password_valid('Password'))     # no number
+        self.assertFalse(is_password_valid('12345678'))     # No uppercase letter
+
 
 
 if __name__=="__main__":

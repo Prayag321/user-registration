@@ -3,7 +3,7 @@
 @Date: 19-08-2024
 @Last Modified by: Prayag Bhoir
 @Last Modified time: 20-08-2024
-@Title : Python programs user ragistration on regex uc6
+@Title : Python programs user ragistration on regex uc7
 """
 import re
 
@@ -61,7 +61,7 @@ def is_password_valid(password):
     Returns:
       bool: True if match, False otherwise.
     """
-    pattern = r'^(?=.*[A-Z]).{8,}$'  # Password must be at least 8 characters long
+    pattern = r'^(?=.*[A-Z])(?=.*\d).{8,}$'  # Password must be at least 8 characters long with 1 uppercase and 1 digit
     return bool(re.match(pattern, password))
 
 def validate_user_input(input_prompt, validation_func, success_message, failure_message):
