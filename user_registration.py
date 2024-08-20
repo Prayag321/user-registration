@@ -3,7 +3,7 @@
 @Date: 19-08-2024
 @Last Modified by: Prayag Bhoir
 @Last Modified time: 20-08-2024
-@Title : Python programs user ragistration on regex uc7
+@Title : Python programs user ragistration on regex uc8
 """
 import re
 
@@ -32,7 +32,7 @@ def is_email_valid(email):
     Returns:
       bool:True if match, False otherwise
     """
-    pattern = "^[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)?@[a-zA-Z0-9]+\.[a-zA-Z]{2,3}(\.[a-zA-Z]{2})?$"
+    pattern = r"^[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)?@[a-zA-Z0-9]+\.[a-zA-Z]{2,3}(\.[a-zA-Z]{2})?$"
     return bool(re.match(pattern, email))
 
 
@@ -61,7 +61,8 @@ def is_password_valid(password):
     Returns:
       bool: True if match, False otherwise.
     """
-    pattern = r'^(?=.*[A-Z])(?=.*\d).{8,}$'  # Password must be at least 8 characters long with 1 uppercase and 1 digit
+    pattern = r'^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])(?!.*[!@#$%^&*(),.?":{}|<>].*[!@#$%^&*(),.?":{}|<>]).{8,}$'
+    # Password must be at least 8 characters long with 1 uppercase and 1 digit exactly one especial case char
     return bool(re.match(pattern, password))
 
 def validate_user_input(input_prompt, validation_func, success_message, failure_message):
