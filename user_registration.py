@@ -1,11 +1,15 @@
-"""
-@Author: Prayag Bhoir
-@Date: 19-08-2024
-@Last Modified by: Prayag Bhoir
-@Last Modified time: 20-08-2024
-@Title : Python programs user ragistration on regex uc9
-"""
 import re
+import logging
+
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s",
+    handlers=[
+        logging.FileHandler("user_registration.log"),  # Logs will be saved in this file
+        logging.StreamHandler()  # Logs will also be printed to the console
+    ]
+)
 
 def validate_name(name):
     """
@@ -19,7 +23,9 @@ def validate_name(name):
       bool:True if match, False otherwise
     """
     pattern = "^[A-Z][A-Za-z]{2,}$"
-    return bool(re.match(pattern,name))
+    valid = bool(re.match(pattern, name))
+    logging.info(f"Validating name: {name} - {'Valid' if valid else 'Invalid'}")
+    return valid
 
 def is_email_valid(email):
     """
@@ -33,8 +39,9 @@ def is_email_valid(email):
       bool:True if match, False otherwise
     """
     pattern = r"^(?!.*[.@]{2})[a-zA-Z0-9]+([\.\-_]?[a-zA-Z0-9]+)*@[a-zA-Z0-9]+\.[a-zA-Z]{2,3}(\.[a-zA-Z]{2,3})?$"
-    return bool(re.match(pattern, email))
-
+    valid = bool(re.match(pattern, email))
+    logging.info(f"Validating email: {email} - {'Valid' if valid else 'Invalid'}")
+    return valid
 
 def is_mobile_valid(mobile):
     """
@@ -48,7 +55,9 @@ def is_mobile_valid(mobile):
       bool: True if match, False otherwise
     """
     pattern = r"^\d{2} \d{10}$"
-    return bool(re.match(pattern, mobile))
+    valid = bool(re.match(pattern, mobile))
+    logging.info(f"Validating mobile number: {mobile} - {'Valid' if valid else 'Invalid'}")
+    return valid
 
 def is_password_valid(password):
     """
@@ -62,8 +71,9 @@ def is_password_valid(password):
       bool: True if match, False otherwise.
     """
     pattern = r'^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])(?!.*[!@#$%^&*(),.?":{}|<>].*[!@#$%^&*(),.?":{}|<>]).{8,}$'
-    # Password must be at least 8 characters long with 1 uppercase and 1 digit exactly one especial case char
-    return bool(re.match(pattern, password))
+    valid = bool(re.match(pattern, password))
+    logging.info(f"Validating password: {'Valid' if valid else 'Invalid'}")
+    return valid
 
 def validate_user_input(input_prompt, validation_func, success_message, failure_message):
     """
@@ -82,13 +92,15 @@ def validate_user_input(input_prompt, validation_func, success_message, failure_
     while True:
         user_input = input(input_prompt)
         if user_input == "0":
+            logging.info("User chose to exit.")
             return None  # User to exit
         if validation_func(user_input):
+            logging.info(success_message)
             print(success_message)
             return user_input  # Valid input
         else:
+            logging.warning(failure_message)
             print(failure_message)
-
 
 def main():
     # Validate first name
@@ -142,11 +154,12 @@ def main():
         return  # User exited
 
     # All inputs are valid
+    logging.info("Registration Successful!")
     print("\nRegistration Successful!")
     print(f"Name: {first_name} {last_name}")
     print(f"Email: {email}")
     print(f"Mobile: {mobile}")
     print(f"Password: {password}")
 
-if __name__=="__main__":
+if __name__ == "__main__":
     main()
