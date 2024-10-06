@@ -16,7 +16,7 @@ This Python script provides a simple user registration system that validates inp
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/user-registration.git
+   git clone https://github.com/Prayag321/user-registration.git
    cd user-registration
    ```
 
